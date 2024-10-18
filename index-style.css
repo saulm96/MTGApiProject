@@ -81,51 +81,87 @@ h1 {
 }
 
 .welcomeSection {
-    margin: 2rem;
+    margin: 1.5rem;
 }
 
-.scrollContainer {
+.presentationP{
+    margin: 2rem 1rem;
+    text-align: center;
+}
+
+/* Card section*/
+.searchingSection h2{
+    text-align: center;
+    margin: 3rem 1rem;
+}
+
+#scrollContainer {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 50%;
+}
+
+#scrollContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dots-container {
     display: flex;
-
-    overflow-x: scroll;
-
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
 
 }
 
-.welcomeSection .scrollContainer img {
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-    padding: 0;
-}
-
-button.prev,
-button.next {
-    border: none;
-    padding: 10px 20px;
+.dot {
+    width: 1rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: black;
     cursor: pointer;
-    font-size: 1rem;
-    margin: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-button.next {
-    background-color: transparent;
-    position: absolute;
-    transform: rotate(-90deg);
-    cursor: pointer;
-    right: 0.5rem;
-    top: 38.5%;
-    padding: 0;
+.dot:hover {
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
-button.prev {
-    background-color: transparent;
-    position: absolute;
-    transform: rotate(90deg);
-    cursor: pointer;
-    left: 0.5rem;
-    top: 38.5%;
-    padding: 0;
+.dot.active {
+    background-color: red;
+    transform: scale(1.2);
+}
+
+/*Card section*/
+.searchingSection{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.cardExplainImg{
+    width: 100%;
+}
+.searchingDiv p{
+    margin: 1rem;}
+
+/*Extra styles*/
+.whiteSpaces .finishingLogo{
+    width: 2rem;
+    height: 2rem; 
+    margin-top: 12%; 
+}
+.whiteSpaces{
+    height: 8rem;
+    width: 100%;
+    background-color: aqua;
+    border-top-style: inset;
+    border-bottom-style: inset;
+    display: flex;
+    justify-content: center;
+}
+.banner1 img{
+    width:100% ;
+    border-top: 0.25rem solid pink;
 }

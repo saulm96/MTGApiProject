@@ -1,4 +1,3 @@
-
 const images = [
   "resources/background1.jpg",
   "resources/background2.jpg",
@@ -7,44 +6,106 @@ const images = [
   "resources/background5.jpg"
 ];
 
-
 const scrollContainer = document.getElementById('scrollContainer');
+let currentImageIndex = 0;
+let currentImage = null;
+let containerInitialized = false;
+let isTransitioning = false;
+let autoSlideInterval;
 
-//load the images
-function loadImages() {
-  images.forEach(imageSrc => {
-    const imgElement = document.createElement('img');
-    imgElement.src = imageSrc; 
-    imgElement.alt = "MTG background images"; 
-    scrollContainer.appendChild(imgElement);
+// Add necessary styles to container
+scrollContainer.style.position = 'relative';
+
+// Create dots container
+const dotsContainer = document.createElement('div');
+dotsContainer.className = 'dots-container';
+scrollContainer.parentNode.appendChild(dotsContainer);
+
+// Create indicator dots
+images.forEach((_, index) => {
+  const dot = document.createElement('div');
+  dot.className = 'dot';
+  dot.addEventListener('click', () => {
+      if (!isTransitioning && index !== currentImageIndex) {
+          // Reset interval on click
+          clearInterval(autoSlideInterval);
+          loadImage(index);
+          startAutoSlide();
+      }
+  });
+  dotsContainer.appendChild(dot);
+});
+
+// Function to update dots indicators
+function updateDots() {
+  const dots = dotsContainer.querySelectorAll('.dot');
+  dots.forEach((dot, index) => {
+      if (index === currentImageIndex) {
+          dot.classList.add('active');
+      } else {
+          dot.classList.remove('active');
+      }
   });
 }
 
-loadImages(); 
+function loadImage(index) {
+  if (isTransitioning) return;
+  isTransitioning = true;
+  currentImageIndex = index;
 
-
-const nextButton = document.querySelector('.next');
-const prevButton = document.querySelector('.prev');
-let index = 0;
-const totalImages = images.length;
-
-function moveSlider(direction) {
+  const imgElement = document.createElement('img');
+  imgElement.src = images[index];
+  imgElement.alt = "MTG background images";
   
-  index += direction;
+  imgElement.style.opacity = '0';
+  imgElement.style.transition = 'opacity 1s ease-in-out';
 
-  if (index >= totalImages) {
-    index = totalImages - 1;
-  } else if (index < 0) {
-    index = 0;
+  if (!containerInitialized) {
+      imgElement.onload = function() {
+
+          containerInitialized = true;
+          imgElement.style.opacity = '1';
+          currentImage = imgElement;
+          isTransitioning = false;
+          updateDots();
+      };
+      scrollContainer.appendChild(imgElement);
+  } else {
+      scrollContainer.appendChild(imgElement);
+      
+      // Wait a bit to ensure the image is rendered
+      setTimeout(() => {
+          // Start fade in of new image
+          imgElement.style.opacity = '1';
+          
+          if (currentImage) {
+              // Start fade out of current image
+              currentImage.style.opacity = '0';
+
+              scrollContainer.removeChild(currentImage);
+              currentImage = imgElement;
+              isTransitioning = false;
+              updateDots();
+          }
+      }, 50);
   }
-
-  const imageWidth = scrollContainer.querySelector('img').clientWidth;
- 
-  const offset = imageWidth * index;
-  scrollContainer.scrollTo({
-    left: offset,
-    behavior: 'smooth' 
-  });
 }
-nextButton.addEventListener('click', () => moveSlider(1));
-prevButton.addEventListener('click', () => moveSlider(-1));
+
+// Function to automatically move the slider
+function autoMoveSlider() {
+  if (!isTransitioning) {
+      const nextIndex = (currentImageIndex + 1) % images.length;
+      loadImage(nextIndex);
+  }
+}
+
+// Function to start automatic sliding
+function startAutoSlide() {
+  autoSlideInterval = setInterval(autoMoveSlider, 5000);
+}
+
+// Load first image
+loadImage(currentImageIndex);
+
+// Start automatic sliding
+startAutoSlide();
