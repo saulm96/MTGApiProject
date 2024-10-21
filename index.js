@@ -13,8 +13,8 @@ let containerInitialized = false;
 let isTransitioning = false;
 let autoSlideInterval;
 
-// Add necessary styles to container
-scrollContainer.style.position = 'relative';
+// Estilos básicos para el contenedor
+scrollContainer.classList.add('scroll-container');
 
 // Create dots container
 const dotsContainer = document.createElement('div');
@@ -27,7 +27,6 @@ images.forEach((_, index) => {
   dot.className = 'dot';
   dot.addEventListener('click', () => {
       if (!isTransitioning && index !== currentImageIndex) {
-          // Reset interval on click
           clearInterval(autoSlideInterval);
           loadImage(index);
           startAutoSlide();
@@ -36,7 +35,6 @@ images.forEach((_, index) => {
   dotsContainer.appendChild(dot);
 });
 
-// Function to update dots indicators
 function updateDots() {
   const dots = dotsContainer.querySelectorAll('.dot');
   dots.forEach((dot, index) => {
@@ -56,42 +54,40 @@ function loadImage(index) {
   const imgElement = document.createElement('img');
   imgElement.src = images[index];
   imgElement.alt = "MTG background images";
-  
-  imgElement.style.opacity = '0';
-  imgElement.style.transition = 'opacity 1s ease-in-out';
+  imgElement.className = 'carousel-image';
 
-  if (!containerInitialized) {
-      imgElement.onload = function() {
-
-          containerInitialized = true;
-          imgElement.style.opacity = '1';
-          currentImage = imgElement;
-          isTransitioning = false;
-          updateDots();
-      };
-      scrollContainer.appendChild(imgElement);
-  } else {
-      scrollContainer.appendChild(imgElement);
-      
-      // Wait a bit to ensure the image is rendered
-      setTimeout(() => {
-          // Start fade in of new image
-          imgElement.style.opacity = '1';
-          
-          if (currentImage) {
-              // Start fade out of current image
-              currentImage.style.opacity = '0';
-
-              scrollContainer.removeChild(currentImage);
+  // Precargar la imagen
+  const preloadImage = new Image();
+  preloadImage.src = images[index];
+  preloadImage.onload = () => {
+      if (!containerInitialized) {
+          scrollContainer.appendChild(imgElement);
+          setTimeout(() => {
+              imgElement.style.opacity = '1';
               currentImage = imgElement;
+              containerInitialized = true;
               isTransitioning = false;
               updateDots();
-          }
-      }, 50);
-  }
+          }, 50);
+      } else {
+          scrollContainer.appendChild(imgElement);
+          setTimeout(() => {
+              imgElement.style.opacity = '1';
+              
+              if (currentImage) {
+                  currentImage.style.opacity = '0';
+                  setTimeout(() => {
+                      scrollContainer.removeChild(currentImage);
+                      currentImage = imgElement;
+                      isTransitioning = false;
+                      updateDots();
+                  }, 100);
+              }
+          }, 50);
+      }
+  };
 }
 
-// Function to automatically move the slider
 function autoMoveSlider() {
   if (!isTransitioning) {
       const nextIndex = (currentImageIndex + 1) % images.length;
@@ -99,7 +95,6 @@ function autoMoveSlider() {
   }
 }
 
-// Function to start automatic sliding
 function startAutoSlide() {
   autoSlideInterval = setInterval(autoMoveSlider, 5000);
 }
