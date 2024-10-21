@@ -1,12 +1,19 @@
-# MTGApiProject
-##Como funciona el buscador:
-Posibilidad de filtrar por:
-Nombre de carta.
-Set de cartas.
-tipo de carta.
-color de maná y coste de maná.
-Año de lanzamiento.
-Palabras específicas de la descripción de la carta.
+MTGApiProject
+##Landing page:
+    Welcome page divided into four main sections:
 
+##Homepage.
+    -Card search.
+    -Deck builder.
+    -Contact page.
 
+##Card search:
+    -Ability to filter by:
+    -Card name.
+    -Card set.
+    -Card type.
+    -Mana color and mana cost.
+    -Release year.
+    -Specific words in the card's description.
 
+##Deck builder:
