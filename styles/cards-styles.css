@@ -1,0 +1,74 @@
+* {
+    margin: 0rem;
+    padding: 0rem;
+}
+
+#card-container {
+    margin: 0rem 2rem;
+    display: flex;
+    border: 2px solid black;
+    width: 80%
+}
+
+.card-main-box {
+    border: 2px solid gray;
+    display: grid;
+    grid-template-areas:
+        "name manacost"
+        "image image "
+        "type subtype"
+        "description description"
+        "power toughness"
+        "set colors";
+    grid-template-columns: 50%;
+}
+
+.card-name {
+    background-color: aqua;
+    grid-area: name;
+}
+
+.card-colors {
+    background-color: blue;
+    grid-area: colors;
+}
+
+.card-image {
+    background-color: pink;
+    grid-area: image;
+}
+
+.card-types {
+    background-color: gray;
+    grid-area: type;
+}
+
+.card-subtype {
+    background-color: antiquewhite;
+    grid-area: subtype;
+}
+
+.card-text {
+    background-color: yellow;
+    grid-area: description;
+}
+
+.card-manacost {
+    background-color: blueviolet;
+    grid-area: manacost;
+}
+
+.card-power {
+    background-color: brown;
+    grid-area: power;
+}
+
+.card-toughness {
+    background-color: aquamarine;
+    grid-area: toughness;
+}
+
+.card-set {
+    background-color: violet;
+    grid-area: set;
+}

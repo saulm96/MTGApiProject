@@ -19,5 +19,9 @@ I finished a function that assembles the URL for the API call, another to collec
 
 2024/10/25
 Cards class to construct the card structure to be shown in the DOM.
-If you click on the card, there is a variable called isClicked which changes between true and false. It will shown more or less data depending the state.
+
+2024/10/26
+Made a script called cardGenerator who prints the api result on screen.
+started adding styles for the cards.
+
 

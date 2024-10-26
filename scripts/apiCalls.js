@@ -7,8 +7,8 @@ async function fetchData(route, searchParams = {}) {
             url.searchParams.append(key, searchParams[key]);
         }
         const response = await fetch(url);
-        //const responseData = await response.json();
-        return response
+        const responseData = await response.json();
+        return responseData
     } catch (error) {
         console.error(error);
         return { error: error }
@@ -17,8 +17,8 @@ async function fetchData(route, searchParams = {}) {
 
 async function cardFilter(params) {
     const filteredCards = await fetchData('cards', params);
+    console.log(filteredCards)
     return filteredCards;
 }
+
 export {cardFilter}
-
-

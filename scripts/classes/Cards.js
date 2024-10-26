@@ -1,16 +1,15 @@
-
 class Card {
     constructor(name, colors, image, types, subtypes, text, manacost, power, toughness, set) {
-        this.name = name;
-        this.colors = colors;
-        this.image = image;
-        this.types = types;
-        this.subtypes = subtypes;
-        this.text = text;
-        this.manacost = manacost;
-        this.power = power;
-        this.toughness = toughness;
-        this.set = set;
+        this.name = name || 'No name available';
+        this.colors = Array.isArray(colors) ? colors : ['No colors available'];
+        this.image = image || 'No image available';
+        this.types = Array.isArray(types) ? types : [];
+        this.subtypes = Array.isArray(subtypes) ? subtypes : [];
+        this.text = text || 'No text available';
+        this.manacost = manacost || '';
+        this.power = power || '';
+        this.toughness = toughness || '';
+        this.set = set || '';
     }
 
     render() {
@@ -27,7 +26,7 @@ class Card {
 
         const colors = document.createElement('p');
         colors.classList.add('card-colors');
-        colors.textContent = this.colors.join(', ');
+        colors.textContent = this.colors.join(' ');
 
         const types = document.createElement('p');
         types.classList.add('card-types');
@@ -41,23 +40,26 @@ class Card {
         text.classList.add('card-text');
         text.textContent = this.text;
 
-        const manaCost = document.createElement('p');
-        manaCost.classList.add('card-manacost');
-        manaCost.textContent = this.manacost;
+        const manacost = document.createElement('p');
+        manacost.classList.add('card-manacost');
+        manacost.textContent = this.manacost;
 
         const power = document.createElement('p');
         power.classList.add('card-power');
         power.textContent = this.power;
 
         const toughness = document.createElement('p');
-        toughness.classList.add('card-power');
+        toughness.classList.add('card-toughness');
         toughness.textContent = this.toughness;
 
         const set = document.createElement('p');
         set.classList.add('card-set');
         set.textContent = this.set;
 
-        section.append(name, colors, image, types, subtypes, text, manaCost, power, toughness, set);
+        section.append(name, colors, image, types, subtypes, text, manacost, power, toughness, set);
+
+        return section;
     }
 }
+
 export default Card;
