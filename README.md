@@ -15,5 +15,5 @@ MTGApiProject
     -Mana color and mana cost.
     -Release year.
     -Specific words in the card's description.
-
-##Deck builder:
+When you search by card yu will see only the front side of the card with a few important info. After clicking there a modal should spawn showing the rest of the info
+//Maybe front side could be true and back side false ?? with an AddListener to change it between true or false?? 
