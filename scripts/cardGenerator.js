@@ -23,14 +23,14 @@ async function displayCards(params) {
         const sortedCards = response.cards.sort((a, b) => {
             if (a.imageUrl && !b.imageUrl) return -1; // a goes first
             if (!a.imageUrl && b.imageUrl) return 1;  // b goes first
-            return 0; // keep original order
+            return 0;
         });
 
         // Iterate through sorted cards and create card elements
         sortedCards.forEach(cardData => {
             // Check and fix image URL
             let imageUrl = cardData.imageUrl;
-            if (!imageUrl || imageUrl.includes('not-available')) {
+            if (!imageUrl) {
                 // You can use a default image of your choice
                 imageUrl = './resources/no-pictures.png';
             }
@@ -50,7 +50,8 @@ async function displayCards(params) {
             );
 
             // Add rendered card to container
-            cardContainer.appendChild(card.render());
+            const cardElement = card.renderFullCard();
+            cardContainer.appendChild(cardElement);
         });
     } catch (error) {
         // Handle any errors that occur during the process
@@ -63,6 +64,8 @@ async function displayCards(params) {
 }
 
 const params = {
-    multiverseid: '40655'
+
+    rarity: 'Mythic',
+    power: '7'
 }
 displayCards(params)

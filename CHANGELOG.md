@@ -23,5 +23,9 @@ Cards class to construct the card structure to be shown in the DOM.
 2024/10/26
 Made a script called cardGenerator who prints the api result on screen.
 started adding styles for the cards.
+Have to test some things with the code still
 
+2024/10/27
+Ended the structure of the full card in CSS.
+Made changes in Card class, now it has two methods, one to only show images and other one to show all the data.
 

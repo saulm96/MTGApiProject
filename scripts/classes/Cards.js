@@ -12,7 +12,22 @@ class Card {
         this.set = set || '';
     }
 
-    render() {
+    // Método para renderizar solo la imagen
+    renderPresentation() {
+        const section = document.createElement('section');
+        section.classList.add('card-image-box');
+
+        const image = document.createElement('img');
+        image.classList.add('card-img');
+        image.src = this.image;
+
+        section.appendChild(image);
+
+        return section;
+    }
+
+
+    renderFullCard() {
         const section = document.createElement('section');
         section.classList.add('card-main-box');
 
@@ -20,13 +35,7 @@ class Card {
         name.classList.add('card-name');
         name.textContent = this.name;
 
-        const image = document.createElement('img');
-        image.classList.add('card-img');
-        image.src = this.image;
-
-        const colors = document.createElement('p');
-        colors.classList.add('card-colors');
-        colors.textContent = this.colors.join(' ');
+        const image = this.renderPresentation();  
 
         const types = document.createElement('p');
         types.classList.add('card-types');
@@ -56,7 +65,8 @@ class Card {
         set.classList.add('card-set');
         set.textContent = this.set;
 
-        section.append(name, colors, image, types, subtypes, text, manacost, power, toughness, set);
+        // Añadimos todos los elementos creados al contenedor principal
+        section.append(name, image, types, subtypes, text, manacost, power, toughness, set);
 
         return section;
     }

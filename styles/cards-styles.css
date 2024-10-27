@@ -1,13 +1,17 @@
 * {
     margin: 0rem;
     padding: 0rem;
+    box-sizing: border-box;
 }
 
 #card-container {
-    margin: 0rem 2rem;
+    margin: 1rem 1rem;
     display: flex;
+    flex-direction: column;
     border: 2px solid black;
-    width: 80%
+    width: 90%;
+    GAP: 1rem;
+    align-items: center;
 }
 
 .card-main-box {
@@ -19,8 +23,16 @@
         "type subtype"
         "description description"
         "power toughness"
-        "set colors";
-    grid-template-columns: 50%;
+        "set set";
+    grid-template-columns: 1fr 6rem;
+    width: 90%;
+    margin: 1rem 0rem;
+}
+
+.card-main-box>* {
+    min-width: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .card-name {
@@ -33,9 +45,17 @@
     grid-area: colors;
 }
 
-.card-image {
+.card-image-box {
+    grid-area: image;
+    display: grid;
+    width: 100%;
+}
+
+.card-img {
     background-color: pink;
     grid-area: image;
+    margin:1rem 0rem;
+
 }
 
 .card-types {
@@ -56,6 +76,7 @@
 .card-manacost {
     background-color: blueviolet;
     grid-area: manacost;
+    width: 100%;
 }
 
 .card-power {
