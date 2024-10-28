@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="index-style.css">
+    <link rel="stylesheet" href="styles/common-styles.css">
+
 </head>
 
 <body>
 
     <header>
         <section class="logoHolder">
-            <img src="resources/logos/MTG-big-black-logo.png" alt="Magic the Gathering logo" width=250px height="120px">
+            <img src="resources/logos/whitelogo.png" alt="Magic the Gathering logo" width=250px height="120px">
             <div class="userButtons">
                 <button class="signIn">Sign In</button>
                 <button class="logIn">Log In</button>
@@ -21,7 +23,7 @@
         <nav class='navBar'>
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Search cards</a></li>
+                <li><a href="archanumCards.html">Search cards</a></li>
                 <li><a href="#">Decks</a></li>
                 <li><a href="#">Contact with us</a></li>
             </ul>
@@ -32,8 +34,13 @@
         <h1 class="pageTittle">The Magic HUB</h1>
         <p class="pageSubtittle">"Discover the secrets of the Multiverse and become a Planeswalker. Your journey starts
             here."</p>
+
+        <div class="scrollContainer" id="scrollContainer"> </div>
+        <div class="dot-position"></div>
+        <script type="module" src="scripts/carousel.js"></script>
+
         <section class="welcomeSection">
-            <div class="scrollContainer" id="scrollContainer"> </div>
+
 
             <p class="presentationP">
                 Welcome to MTG Multiverse Encyclopedia, your ultimate resource for everything Magic: The Gathering.</p>
@@ -52,7 +59,6 @@
 
         <div class="whiteSpaces">
             <img src="resources/logos/small-black-M.png" alt="small old logo" class="finishingLogo">
-
         </div>
 
         <section class="searchingSection">
@@ -92,7 +98,6 @@
             <img src="resources/banner1.png" alt="">
         </div>
     </footer>
-
 </body>
 
 </html>

@@ -19,7 +19,9 @@ scrollContainer.classList.add('scroll-container');
 // Create dots container
 const dotsContainer = document.createElement('div');
 dotsContainer.className = 'dots-container';
-scrollContainer.parentNode.appendChild(dotsContainer);
+const dotsPosition = document.querySelector('.dot-position')
+dotsPosition.appendChild(dotsContainer);
+
 
 // Create indicator dots
 images.forEach((_, index) => {

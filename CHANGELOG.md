@@ -29,3 +29,7 @@ Have to test some things with the code still
 Ended the structure of the full card in CSS.
 Made changes in Card class, now it has two methods, one to only show images and other one to show all the data.
 
+To do list Week from Oct28 to Oct30:
+Finish landing page front.(80%)
+finish search cards front.
+Create browser with filters.

@@ -35,7 +35,10 @@ class Card {
         name.classList.add('card-name');
         name.textContent = this.name;
 
+        
         const image = this.renderPresentation();  
+        //Change the class so it works propperly also in the modal
+        image.classList.replace('card-image-box','modal-img')  
 
         const types = document.createElement('p');
         types.classList.add('card-types');

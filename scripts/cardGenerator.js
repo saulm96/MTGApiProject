@@ -50,7 +50,7 @@ async function displayCards(params) {
             );
 
             // Add rendered card to container
-            const cardElement = card.renderFullCard();
+            const cardElement = card.renderPresentation();
             cardContainer.appendChild(cardElement);
         });
     } catch (error) {
@@ -64,8 +64,6 @@ async function displayCards(params) {
 }
 
 const params = {
-
-    rarity: 'Mythic',
-    power: '7'
+    name: 'atraxa'
 }
-displayCards(params)
+/*displayCards(params)*/

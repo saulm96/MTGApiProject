@@ -1,19 +1,25 @@
-* {
-    margin: 0rem;
-    padding: 0rem;
-    box-sizing: border-box;
-}
 
+/*Card styles*/
 #card-container {
-    margin: 1rem 1rem;
-    display: flex;
-    flex-direction: column;
-    border: 2px solid black;
-    width: 90%;
-    GAP: 1rem;
-    align-items: center;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: 2rem;
+    padding: 1rem;
 }
 
+.card-img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.card-img:hover {
+    transform: scale(1.1);
+    width: 100%;
+    box-shadow:  0 0 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+/*
 .card-main-box {
     border: 2px solid gray;
     display: grid;
@@ -54,7 +60,7 @@
 .card-img {
     background-color: pink;
     grid-area: image;
-    margin:1rem 0rem;
+    margin: 1rem 0rem;
 
 }
 
@@ -92,4 +98,4 @@
 .card-set {
     background-color: violet;
     grid-area: set;
-}
+}*/

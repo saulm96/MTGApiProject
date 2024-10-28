@@ -1,105 +1,40 @@
-/*Resetea el margen y paddin de todo el documento*/
-* {
-    margin: 0;
-    padding: 0;
-}
-
-/*Header y NAV*/
-header {
-    display: flex;
-    flex-direction: column;
-    background-color: pink;
-}
-
-.logoHolder {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: gray;
-}
-
-.userButtons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 1rem;
-    gap: 1rem;
-
-}
-
-.userButtons button {
-    padding: 0.25rem;
-    border-radius: 0.5rem;
-    background-color: lightgray;
-}
-
-.userButtons button:hover {
-    padding: 0.6rem;
-    border-radius: 0.5rem;
-    background-color: darkgray;
-}
-
-.navBar {
-    border-top: 2px solid black;
-    background-color: lightslategray;
-}
-
-.navBar ul {
-    margin: 1rem;
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    justify-content: space-between;
-}
-
-.navBar ul li a {
-    text-decoration: none;
-    color: lightgray;
-}
-
-.navBar ul li a:hover {
-    text-decoration: none;
-    color: red;
-}
-
 /*Body*/
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.2),rgba(60,0,0,0.2),rgba(0, 0, 0, 0.2)),
+    url('https://gatherer.wizards.com/Images/background/Gray_Patterned_BG.jpg')
+      
+      
 }
-
 h1 {
     margin-top: 1rem;
+    color: silver;
 }
 
 .pageSubtittle {
     text-align: center;
     font-style: italic;
-
+    color: silver;
 }
 
 .welcomeSection {
     margin: 1.5rem;
 }
 
-.presentationP{
+.presentationP {
     margin: 2rem 1rem;
     text-align: center;
-}
-
-/* Card section*/
-.searchingSection h2{
-    text-align: center;
-    margin: 3rem 1rem;
+    color: silver;
 }
 
 #scrollContainer {
+    margin-top:1rem;
     position: relative;
     overflow: hidden;
-    height: 200px;
-    width:100%;
+    height: 15rem;
+    width: 100%;
 }
 
 #scrollContainer img {
@@ -108,10 +43,10 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit:contain;
+    object-fit: contain;
     opacity: 0;
     transition: opacity 1s ease-in-out;
-    
+
 }
 
 .dots-container {
@@ -141,47 +76,69 @@ h1 {
 }
 
 /*Card section*/
-.searchingSection{
+
+.searchingSection h2 {
+    text-align: center;
+    margin: 2rem 1rem;
+    color: silver;
+}
+
+.searchingSection {
     display: flex;
     flex-direction: column;
     width: 100%;
     justify-content: center;
 }
 
-.searchingDiv p{
-    margin: 1rem;
-}
-.exampleIMG{
-    width: 12rem;
-    padding-left: 25%;
+.searchingDiv :first-child {
+    margin-top: 2rem;
 }
 
-#goToCardsPage{
-    margin: 1rem 8rem;
-    padding: 0.5rem 0.5rem;
+.searchingDiv p {
+    margin: 1rem;
+    color: silver;
+}
+
+.buttonLink {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.exampleIMG {
+    width: 50%;
+    border-radius: 6%
+}
+
+#goToCardsPage {
+    align-self: center;
+    width: 30%;
+    padding: 1rem 1rem;
+    margin: 1rem;
     border-radius: 4rem;
 }
-#goToCardsPage a{
+
+#goToCardsPage a {
     text-decoration: none;
     color: black
 }
 
 /*Extra styles*/
-.whiteSpaces .finishingLogo{
+.whiteSpaces .finishingLogo {
     width: 2rem;
-    height: 2rem; 
-    margin-top: 12%; 
+    height: 2rem;
+    margin-top: 12%;
 }
-.whiteSpaces{
+
+.whiteSpaces {
     height: 8rem;
     width: 100%;
-    background-color: aqua;
-    border-top-style: inset;
-    border-bottom-style: inset;
     display: flex;
     justify-content: center;
+    background-color: rgba(0, 0, 0, 1);
 }
-.banner1 img{
-    width:100% ;
+
+.banner1 img {
+    width: 100%;
     border-top: 0.25rem solid pink;
 }

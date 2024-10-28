@@ -1,0 +1,61 @@
+* {
+    margin: 0rem;
+    padding: 0rem;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    background-image: url('https://gatherer.wizards.com/Images/background/Gray_Patterned_BG.jpg');
+}
+
+.logoHolder {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.4)
+}
+
+.userButtons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 1rem;
+    gap: 1rem;
+}
+
+.userButtons button {
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    background-color: silver;
+}
+
+.userButtons button:hover {
+    background-color: darkgray;
+}
+
+.navBar {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    background-color: rgba(0, 0, 0, 0.3)
+}
+
+.navBar ul {
+    margin: 1rem;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.navBar ul li a {
+    text-decoration: none;
+    color: lightgray;
+}
+
+.navBar ul li a:hover {
+    text-decoration: none;
+    color: red;
+}
