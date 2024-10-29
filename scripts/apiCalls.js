@@ -25,10 +25,14 @@ async function fetchData(route, searchParams = {}) {
 }
 
 async function cardFilter(params) {
-
     const filteredCards = await fetchData('cards', params);
-    console.log(filteredCards)
     return filteredCards;
 }
+async function getTypes(){
+    const result = await fetchData('types');
+    return result;
+}
 
-export { cardFilter }
+export{cardFilter,
+    getTypes
+}

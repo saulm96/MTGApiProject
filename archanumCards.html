@@ -28,8 +28,72 @@
         </nav>
     </header>
 
-    <section id="card-container"></section>
+    <main>
+        <h2 class="tittle">Archanum</h2>
+
+        <form action="" class="search-filter">
+
+            <section class="name-div">
+                <label for="card-name" id="name-label">Card name:</label>
+                <input type="text" id="card-name" name="card-name"><br>
+            </section>
+
+            <section class="power-toughness">
+                <div class="power-div">
+                    <label for="power" id="power-label">Power:</label>
+                    <input type="number" name="power" id="power"><br>
+                </div>
+                <div class="toughness-div">
+                    <label for="toughness" id="toughness-label">toughness:</label>
+                    <input type="number" name="toughness" id="toughness"><br>
+                </div>
+            </section>
+
+            <section class="color-section">
+                <div class="color-checkboxes">
+                    <span class="mana-container">
+                        <img src="resources/manas/colored-manas/Black_Mana.png" alt="black mana logo">
+                        <input type="checkbox" name="colors" id="colors" value="black">
+                    </span>
+
+                    <span class="mana-container">
+                        <img src="resources/manas/colored-manas/Blue_Mana.png" alt="blue man alogo">
+                        <input type="checkbox" name="colors" id="colors" value="blue">
+                    </span>
+
+                    <span class="mana-container">
+                        <img src="resources/manas/colored-manas/Red_Mana.png" alt="">
+                        <input type="checkbox" name="colors" id="colors" value="red">
+                    </span>
+
+                    <span class="mana-container">
+                        <img src="resources/manas/colored-manas/White_Mana.png" alt="white man alogo">
+                        <input type="checkbox" name="colors" id="colors" value="white">
+                    </span>
+
+                    <span class="mana-container">
+                        <img src="resources/manas/colored-manas/Green_Mana.png" alt="">
+                        <input type="checkbox" name="colors" id="colors" value="green">
+                    </span>
+                </div>
+            </section>
+            <section class="type-subtype">
+                <div class="type-div">
+                    <label for="type" id="type-label">Type</label>
+                    <select name="type" id="type-selector"></select>
+                </div>
+                <div class="subtypes-div">
+                    <label for="subtypes" id="subtypes-label">Subtypes:</label>
+                    <input type="text" name="subtypes" id="subtypes">
+                </div>
+            </section>
+        </form>
+
+        <section id="card-container"></section>
+
+    </main>
     <script type="module" src="scripts/cardGenerator.js"></script>
+    <script type="module" src="scripts/filterBar.js"></script>
 </body>
 
 </html>

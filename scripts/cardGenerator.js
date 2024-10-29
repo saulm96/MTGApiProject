@@ -1,4 +1,4 @@
-import { cardFilter } from "./apiCalls.js";
+import { cardFilter} from "./apiCalls.js";
 import Card from "./classes/Cards.js";
 
 const cardContainer = document.getElementById('card-container');
@@ -37,15 +37,15 @@ async function displayCards(params) {
 
             // Create new card instance with data
             const card = new Card(
-                cardData.name,
-                cardData.colors,
+                cardData.name,//
+                cardData.colors,//
                 imageUrl,
                 cardData.types,
                 cardData.subtypes,
                 cardData.text,
                 cardData.manaCost,
-                cardData.power,
-                cardData.toughness,
+                cardData.power,//
+                cardData.toughness,//
                 cardData.setName
             );
 
@@ -64,6 +64,6 @@ async function displayCards(params) {
 }
 
 const params = {
-    name: 'atraxa'
+    rarity:'Mythic'
 }
-/*displayCards(params)*/
+displayCards(params)

@@ -1,6 +1,127 @@
+main {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(100, 100, 100, 0.4), rgba(0, 0, 0, 0.2)),
+        url('https://gatherer.wizards.com/Images/background/Gray_Patterned_BG.jpg');
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tittle {
+    padding: 2rem;
+    color: silver;
+}
+
+/*Form*/
+.search-filter {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/*Name*/
+.name-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#name-label {
+    color: silver;
+}
+
+#card-name {
+    width: 6rem;
+    background-color: gray;
+}
+
+/*Power*/
+.power-toughness {
+    display: flex;
+    flex-direction: row;
+    color: silver;
+    gap: 1rem;
+}
+
+.power-div {
+    display: flex;
+    flex-direction: row;
+}
+
+#power {
+    width: 2rem;
+    background-color: gray;
+}
+
+/*toughness*/
+.toughness-div {
+    display: flex;
+    flex-direction: row;
+}
+
+#toughness {
+    width: 2rem;
+    background-color: gray;
+}
+
+.color-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.color-checkboxes {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#colors {
+    accent-color: gray;
+}
+
+.mana-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.type-subtype {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.type-div {
+    color: silver;
+}
+
+#type-selector {
+    background-color: gray;
+
+}
+
+.subtypes-div {
+    color: silver;
+}
+
+#subtypes {
+    background-color: gray;
+    width: 8rem;
+}
+
 
 /*Card styles*/
 #card-container {
+    min-height: 40rem;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
@@ -16,7 +137,7 @@
 .card-img:hover {
     transform: scale(1.1);
     width: 100%;
-    box-shadow:  0 0 10px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
 }
 
 /*
