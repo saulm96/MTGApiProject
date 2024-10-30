@@ -130,12 +130,14 @@ main {
     background-color: gray;
     color: silver;
 }
+
+
 /*Card styles*/
 #card-container {
     min-height: 40rem;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
     gap: 2rem;
     padding: 1rem;
 }
@@ -159,83 +161,27 @@ main {
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
 }
 
-/*
-.card-main-box {
-    border: 2px solid gray;
-    display: grid;
-    grid-template-areas:
-        "name manacost"
-        "image image "
-        "type subtype"
-        "description description"
-        "power toughness"
-        "set set";
-    grid-template-columns: 1fr 6rem;
-    width: 90%;
-    margin: 1rem 0rem;
+/*MODAL*/
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    
 }
 
-.card-main-box>* {
-    min-width: 0;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+/* Mostrar el modal */
+#modal-container {
+    display: flex; /* o el valor que prefieras para tu diseño */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.card-name {
-    background-color: aqua;
-    grid-area: name;
+#modal-container.active {
+    visibility: visible;
+    opacity: 1;
+    position: fixed;
+    margin-top: 5rem;
 }
-
-.card-colors {
-    background-color: blue;
-    grid-area: colors;
+.exit-button{
+    color: white;
 }
-
-.card-image-box {
-    grid-area: image;
-    display: grid;
-    width: 100%;
-}
-
-.card-img {
-    background-color: pink;
-    grid-area: image;
-    margin: 1rem 0rem;
-
-}
-
-.card-types {
-    background-color: gray;
-    grid-area: type;
-}
-
-.card-subtype {
-    background-color: antiquewhite;
-    grid-area: subtype;
-}
-
-.card-text {
-    background-color: yellow;
-    grid-area: description;
-}
-
-.card-manacost {
-    background-color: blueviolet;
-    grid-area: manacost;
-    width: 100%;
-}
-
-.card-power {
-    background-color: brown;
-    grid-area: power;
-}
-
-.card-toughness {
-    background-color: aquamarine;
-    grid-area: toughness;
-}
-
-.card-set {
-    background-color: violet;
-    grid-area: set;
-}*/
