@@ -41,6 +41,7 @@ export class FormProcessor {
             subtypes,
             rarity,
         };
+        
         //Delete empty values so we can mount the endpoints propperly
         Object.keys(formData).forEach(key => {
             if (formData[key] === '' || formData[key] === ' ') {

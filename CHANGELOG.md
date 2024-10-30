@@ -37,3 +37,5 @@ Create browser with filters.
 2024/10/29
 landing page (99%)
 created a new feature to work on the searching filter.
+
+Create a checkbox to ask if you want the results of the filter to only get images or not.

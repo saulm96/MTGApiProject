@@ -26,6 +26,12 @@ class Card {
             cardName.classList.add('card-name');
             cardName.textContent = this.name;
             section.appendChild(cardName);
+
+            const setName = document.createElement('p');
+            setName.classList.add('set-name');
+            setName.textContent = this.set;
+            section.appendChild(setName);
+
         }
         section.appendChild(image);
         
