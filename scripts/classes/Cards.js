@@ -2,7 +2,7 @@ class Card {
     constructor(name, colors, image, types, subtypes, text, manacost, power, toughness, set) {
         this.name = name || 'No name available';
         this.colors = Array.isArray(colors) ? colors : ['No colors available'];
-        this.image = image || 'No image available';
+        this.image = image;
         this.types = Array.isArray(types) ? types : [];
         this.subtypes = Array.isArray(subtypes) ? subtypes : [];
         this.text = text || 'No text available';
@@ -16,12 +16,20 @@ class Card {
     renderPresentation() {
         const section = document.createElement('section');
         section.classList.add('card-image-box');
-
+        
         const image = document.createElement('img');
         image.classList.add('card-img');
         image.src = this.image;
-
+        
+        if(this.image === './resources/no-pictures.png'){
+            const cardName = document.createElement('p');
+            cardName.classList.add('card-name');
+            cardName.textContent = this.name;
+            section.appendChild(cardName);
+        }
         section.appendChild(image);
+        
+
 
         return section;
     }
@@ -35,10 +43,10 @@ class Card {
         name.classList.add('card-name');
         name.textContent = this.name;
 
-        
-        const image = this.renderPresentation();  
+
+        const image = this.renderPresentation();
         //Change the class so it works propperly also in the modal
-        image.classList.replace('card-image-box','modal-img')  
+        image.classList.replace('card-image-box', 'modal-img')
 
         const types = document.createElement('p');
         types.classList.add('card-types');

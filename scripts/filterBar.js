@@ -42,6 +42,4 @@ function renderTypes(types){
         selector.add(option);;
     }
 }
-
-
 renderTypes(types);

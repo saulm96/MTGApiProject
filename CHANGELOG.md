@@ -31,5 +31,9 @@ Made changes in Card class, now it has two methods, one to only show images and 
 
 To do list Week from Oct28 to Oct30:
 Finish landing page front.(80%)
-finish search cards front.
 Create browser with filters.
+
+
+2024/10/29
+landing page (99%)
+created a new feature to work on the searching filter.

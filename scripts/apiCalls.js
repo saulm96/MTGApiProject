@@ -28,11 +28,5 @@ async function cardFilter(params) {
     const filteredCards = await fetchData('cards', params);
     return filteredCards;
 }
-async function getTypes(){
-    const result = await fetchData('types');
-    return result;
-}
-
-export{cardFilter,
-    getTypes
+export{cardFilter
 }
