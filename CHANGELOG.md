@@ -29,13 +29,19 @@ Have to test some things with the code still
 Ended the structure of the full card in CSS.
 Made changes in Card class, now it has two methods, one to only show images and other one to show all the data.
 
-To do list Week from Oct28 to Oct30:
-Finish landing page front.(80%)
-Create browser with filters.
-
-
 2024/10/29
 landing page (99%)
 created a new feature to work on the searching filter.
 
+2024/10/30
+finished searchfilter feature, still have to fix bugs when only one card is shown (also with only one row);
+
+
+TO DO:
+cancel the scroll of the page when the modal is on.
+Add paginate.
+Add a loading gif to show untill all the cards are loaded into the page.
 Create a checkbox to ask if you want the results of the filter to only get images or not.
+
+
+

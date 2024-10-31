@@ -72,15 +72,15 @@ class Card {
 
         const power = document.createElement('p');
         power.classList.add('card-power');
-        power.textContent = this.power;
+        power.textContent = 'Power: ' + this.power;
 
         const toughness = document.createElement('p');
         toughness.classList.add('card-toughness');
-        toughness.textContent = this.toughness;
+        toughness.textContent = 'Toughness: ' + this.toughness;
 
         const set = document.createElement('p');
         set.classList.add('card-set');
-        set.textContent = this.set;
+        set.textContent = 'set: ' + this.set; 
 
         // Añadimos todos los elementos creados al contenedor principal
         section.append(name, image, types, subtypes, text, manacost, power, toughness, set);

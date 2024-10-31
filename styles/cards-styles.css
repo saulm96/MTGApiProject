@@ -117,16 +117,19 @@ main {
     background-color: gray;
     width: 8rem;
 }
-.last-group{
+
+.last-group {
     display: flex;
     flex-direction: row;
     gap: 1rem;
     color: silver;
 }
-#rarity-selector{
+
+#rarity-selector {
     background: gray;
 }
-.search-button{
+
+.search-button {
     background-color: gray;
     color: silver;
 }
@@ -147,15 +150,17 @@ main {
     height: 100%;
     border-radius: 10px;
 }
-.card-image-box{
+
+.card-image-box {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 .card-image-box:hover {
-    
+
     transform: scale(1.1);
     width: 100%;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
@@ -165,15 +170,24 @@ main {
 .hidden {
     visibility: hidden;
     opacity: 0;
-    
+
 }
 
 /* Mostrar el modal */
 #modal-container {
-    display: flex; /* o el valor que prefieras para tu diseño */
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.3s ease;
+    width: 90%;
+    color: silver;
+    display: flex;
+    flex-direction: column;
+    border: 0.25rem solid black;
+    padding: 0.75rem;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)),
+    url(/resources/stone-texture.jpg);
+    background-size: contain;
+
 }
 
 #modal-container.active {
@@ -182,6 +196,69 @@ main {
     position: fixed;
     margin-top: 5rem;
 }
-.exit-button{
-    color: white;
+
+.close-modal {
+    border-top: 0.25rem solid black;
+    background-color: gray;
+    color: black;
+}
+
+/*Card container*/
+.card-main-box {
+    display: grid;
+    align-items: center;
+    grid-template-areas:
+        "tittle manaCost"
+        "image type"
+        "image subtype"
+        "image power"
+        "image toughness"
+        "image set"
+        "text text";
+    grid-template-columns: 2fr 1fr;
+    gap: 0.2rem;
+}
+
+.card-name {
+    grid-area: tittle;
+    text-align: center;
+}
+
+.card-manacost {
+    grid-area: manaCost;
+    text-align: end;
+}
+
+.modal-img {
+    grid-area: image;
+    margin-top: 1rem;
+    
+}
+
+.card-img{
+    object-fit: contain;
+
+}
+.card-types {
+    grid-area: type;
+}
+
+.card-subtype {
+    grid-area: subtype;
+}
+
+.card-text {
+    grid-area: text;
+}
+
+.card-power {
+    grid-area: power;
+}
+
+.card-toughness {
+    grid-area: toughness;
+}
+
+.card-set {
+    grid-area: set;
 }

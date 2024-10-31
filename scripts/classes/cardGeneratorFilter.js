@@ -1,4 +1,4 @@
-import { cardFilter } from "../apiCalls.js";
+import { cardFilter, imageCardOnly } from "../apiCalls.js";
 import Card from "./Cards.js";
 
 export class FormProcessor {
@@ -98,11 +98,27 @@ export class FormProcessor {
         const fullCard = card.renderFullCard();
         this.modalContainer.appendChild(fullCard);
 
+
+        console.log(card);
+
+
         // Create a close button inside the modal
         const closeButton = document.createElement('button');
         closeButton.textContent = 'Close';
         closeButton.classList.add('close-modal');  // You can style this button with CSS
         this.modalContainer.appendChild(closeButton);
+
+        //Add here the fav button
+        const favButton = document.createElement('button');
+        favButton.textContent = 'fav';
+        favButton.classList.add('fav-button');
+        this.modalContainer.appendChild(favButton);
+
+
+        //Event clicker for the fav button
+        favButton.addEventListener('click', () => this.addFavourites(card));
+
+
 
         // Hide form and card container to focus on the modal view
         this.form.classList.add('hidden');
@@ -126,4 +142,15 @@ export class FormProcessor {
         // Clear the modal content to remove the card and close button
         this.modalContainer.innerHTML = '';
     }
-}
+    addFavourites(card){
+        let favList = JSON.parse(localStorage.getItem('coleccion1') || []);
+        favList.push(card);
+        const favListJSON = JSON.stringify(favList);
+        localStorage.setItem('coleccion1', favListJSON);
+        return favListJSON;
+    }
+}  
+
+
+
+

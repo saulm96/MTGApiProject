@@ -28,5 +28,12 @@ async function cardFilter(params) {
     const filteredCards = await fetchData('cards', params);
     return filteredCards;
 }
-export{cardFilter
+
+async function imageCardOnly(params){
+ const cardsWithImageURL = await fetchData('cards?contain=imageURL',params)
+ console.log(params)
+ return cardsWithImageURL;
+}
+export{cardFilter,
+    imageCardOnly,
 }
