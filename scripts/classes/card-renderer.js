@@ -6,7 +6,6 @@ export class CardRenderer {
         this.cardContainer = document.getElementById('card-container');
         this.modalManager = modalManager || new ModalManager();
     }
-
     displayCardResults(cards) {
         const sortedCards = this.sortCardsByImageAvailability(cards);
         
