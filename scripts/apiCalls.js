@@ -25,7 +25,7 @@ async function fetchData(route, searchParams = {}) {
 }
 
 async function cardFilter(params) {
-    const filteredCards = await fetchData('cards?pageSize=21', params);
+    const filteredCards = await fetchData('cards?pageSize=36', params);
     return filteredCards;
 }
 

@@ -15,11 +15,15 @@ main {
 
 /*Form*/
 .search-filter {
-    width: 100%;
+    width:70%;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
+    border: 1px outset silver;
+    box-shadow: 0px 0px 10px 5px rgba(120, 120, 120, 0.2);
 }
 
 
@@ -98,7 +102,6 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 100%;
     gap: 0.5rem;
 }
 
@@ -138,7 +141,7 @@ main {
     min-height: 40rem;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+    grid-template-columns:repeat(3,1fr);
     gap: 2rem;
     padding: 1rem;
 }
@@ -320,4 +323,26 @@ main {
     border-radius: 10%;
     border: none;
     box-shadow: 0 0 10px 5px rgba(100, 100, 100, 0.5);
+}
+
+
+@media (min-width: 769px) and (max-width: 1024px) { /* Tablets */
+    .search-filter{
+        width: 80%;
+    }
+    #card-container {
+        grid-template-columns: repeat(4, 1fr); /* 4 cartas por fila */
+    }
+}
+@media (min-width: 1024px){
+    .search-filter{
+        flex-direction: row;
+        width: 80%;
+        justify-content: center;
+        gap: 2rem;
+    }
+    #card-container{
+        grid-template-columns: repeat(6, 1fr);
+
+    }
 }
