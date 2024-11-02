@@ -21,6 +21,7 @@ main {
     gap: 1rem;
 }
 
+
 /*Name*/
 .name-div {
     display: flex;
@@ -173,48 +174,54 @@ main {
 
 }
 
-/* Mostrar el modal */
 #modal-container {
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 1s ease;
     width: 90%;
     color: silver;
-    display: flex;
-    flex-direction: column;
     border: 0.25rem solid black;
     padding: 0.75rem;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)),
     url(/resources/stone-texture.jpg);
     background-size: contain;
-
+    display: grid;
+    grid-template-areas: 
+    "close"
+    "card"
+    "decks";
+    gap: 0.5rem;
 }
 
 #modal-container.active {
     visibility: visible;
     opacity: 1;
     position: fixed;
-    margin-top: 5rem;
+    margin-top: 2rem;
 }
 
 .close-modal {
-    border-top: 0.25rem solid black;
-    background-color: gray;
-    color: black;
+    justify-self: flex-end;
+    border: none;
+    grid-area: close;
+    background: url(../resources/logos/close.png);
+    width: 32px;
+    height: 32px;
 }
 
-/*Card container*/
 .card-main-box {
+    grid-area: card;
     display: grid;
     align-items: center;
     grid-template-areas:
-        "tittle manaCost"
+        "tittle tittle"
+        "manaCost manaCost"
         "image type"
         "image subtype"
         "image power"
         "image toughness"
         "image set"
-        "text text";
+        "descpt desctp";
     grid-template-columns: 2fr 1fr;
     gap: 0.2rem;
 }
@@ -248,7 +255,8 @@ main {
 }
 
 .card-text {
-    grid-area: text;
+    grid-area: desctp;
+    grid-column: span 2;
 }
 
 .card-power {
@@ -261,4 +269,23 @@ main {
 
 .card-set {
     grid-area: set;
+}
+
+.deck-modal-button{
+    grid-area: decks;
+    width: 11%;
+    height: 2.5rem;
+    background: url(../resources/logos/add-img.png);
+    border: none;
+    background-size:cover;
+}
+
+.create-collection-button{
+    background-color: gray;
+}
+
+.collection-button{
+    background-color: pink;
+    height: 4rem;
+    width: 4rem;
 }
