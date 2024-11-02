@@ -13,17 +13,13 @@
     <header>
         <section class="logoHolder">
             <img src="resources/logos/whitelogo.png" alt="Magic the Gathering logo" width=250px height="120px">
-            <div class="userButtons">
-                <button class="signIn">Sign In</button>
-                <button class="logIn">Log In</button>
-            </div>
+
         </section>
         <nav class='navBar'>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="#">Search cards</a></li>
-                <li><a href="#">Decks</a></li>
-                <li><a href="#">Contact with us</a></li>
+                <li><a href="deckEditor.html">Decks</a></li>
             </ul>
         </nav>
     </header>
@@ -77,7 +73,7 @@
                     </span>
                 </div>
             </section>
-            
+
             <section class="type-subtype">
                 <div class="type-div">
                     <label for="type" id="type-label">Type</label>
@@ -88,22 +84,21 @@
                     <input type="text" name="subtypes" id="subtypes">
                 </div>
             </section>
-            <section class="last-group">
-                <div class="rarity-div">
-                    <label for="rarity-div">Rarity:</label>
-                    <select name="rarity" id="rarity-selector">
-                        <option value=""></option>
-                        <option value="Common">Common</option>
-                        <option value="Uncommon">Uncommon</option>
-                        <option value="Rare">Rare</option>
-                        <option value="Mythic">Mythic Rare</option>
-                    </select>
-                </div>
+
+            <section class="rarity-div">
+                <label for="rarity-div">Rarity:</label>
+                <select name="rarity" id="rarity-selector">
+                    <option value=""></option>
+                    <option value="Common">Common</option>
+                    <option value="Uncommon">Uncommon</option>
+                    <option value="Rare">Rare</option>
+                    <option value="Mythic">Mythic Rare</option>
+                </select>
                 <button type="submit" class="search-button">Submit</button>
             </section>
+
         </form>
         <div id="modal-container"></div>
-
         <section id="card-container"></section>
         <script type="module" src="/scripts/cards-index.js"></script>
         <script src="/scripts/filterBar.js"></script>

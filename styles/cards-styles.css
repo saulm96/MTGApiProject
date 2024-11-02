@@ -5,6 +5,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .tittle {
@@ -119,10 +120,7 @@ main {
     width: 8rem;
 }
 
-.last-group {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
+.rarity-div{
     color: silver;
 }
 
@@ -134,7 +132,6 @@ main {
     background-color: gray;
     color: silver;
 }
-
 
 /*Card styles*/
 #card-container {
@@ -270,7 +267,6 @@ main {
 .card-set {
     grid-area: set;
 }
-
 .deck-modal-button{
     grid-area: decks;
     width: 11%;
@@ -279,13 +275,49 @@ main {
     border: none;
     background-size:cover;
 }
-
+.deck-modal{
+    display: grid;
+    grid-template-areas:
+    "tittle tittle"
+    "new new"
+    "textfield save"
+    "button button";
+    gap: 0.2rem;
+}
+.deck-modal h3{
+    grid-area: tittle;
+}
+.collection-input{
+    grid-area: textfield;
+    background-color: lightgray;
+}
 .create-collection-button{
+    grid-area: new;
     background-color: gray;
+    width: 25%;
+    height: 2rem;
+}
+.save-collection-button{
+    grid-area: save;
+    width: 50%;
+    background-color: lightgray;
 }
 
-.collection-button{
-    background-color: pink;
-    height: 4rem;
-    width: 4rem;
+.collection-input-container {
+    grid-area: button;
+    margin-top: 0.5rem;
+    display: grid;
+    justify-content: start;
+    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(4rem, 1fr)); /* Distribuye columnas de manera dinámica */
+}
+
+/* Estilo del Botón */
+.collection-button {
+    background-color: lightgrey;
+    height: 2rem;
+    width: 5rem;
+    border-radius: 10%;
+    border: none;
+    box-shadow: 0 0 10px 5px rgba(100, 100, 100, 0.5);
 }

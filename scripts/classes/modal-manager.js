@@ -13,6 +13,7 @@ export class ModalManager {
         this.renderFullCardModal(card);
         this.setupModalButtons(card);
         this.toggleModalVisibility(true);
+        this.disableScroll(); // Deshabilitar scroll al mostrar el modal
     }
 
     clearModalContent() {
@@ -41,7 +42,7 @@ export class ModalManager {
         return closeButton;
     }
 
-    createAddToDeckButton() {
+    createAddToDeckButton(card) {
         const addToDeckButton = document.createElement('button');
         addToDeckButton.classList.add('deck-modal-button');
         return addToDeckButton;
@@ -56,6 +57,7 @@ export class ModalManager {
     hideFullCard() {
         this.toggleModalVisibility(false);
         this.modalContainer.innerHTML = '';
+        this.enableScroll(); // Reactivar scroll al cerrar el modal
     }
 
     showDeckModal(card) {
@@ -67,5 +69,15 @@ export class ModalManager {
 
         const deckModal = this.collectionManager.createDeckModal(card);
         this.modalContainer.appendChild(deckModal);
+    }
+
+    // Nuevo método para deshabilitar el scroll
+    disableScroll() {
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Nuevo método para habilitar el scroll
+    enableScroll() {
+        document.body.style.overflow = '';
     }
 }

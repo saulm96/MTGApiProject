@@ -36,6 +36,11 @@ created a new feature to work on the searching filter.
 2024/10/30
 finished searchfilter feature, still have to fix bugs when only one card is shown (also with only one row);
 
+2024/11/01
+Refactored the big class in smaller ones to make it easier to read and to scale if it's necesary.
+
+2024/11/02
+
 
 TO DO:
 cancel the scroll of the page when the modal is on.
