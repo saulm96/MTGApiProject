@@ -1,0 +1,254 @@
+body{
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(100, 100, 100, 0.4), rgba(0, 0, 0, 0.2)),
+        url('https://gatherer.wizards.com/Images/background/Gray_Patterned_BG.jpg');
+}
+main {
+
+    margin-top: 8rem;
+    width: 100%;
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tittle {
+    color: silver;
+    font-size: 3rem;
+    margin-top: 1rem;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.hidden{
+    visibility: hidden;
+}
+
+
+/* decks and deck buttons*/
+#deck-container {
+    width: 90%;
+    margin: 3rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+.deck-button{
+    width: 100%;
+    height: 4vh;
+    box-shadow: 0px 0px 10px 5px rgba(12, 12, 12, 0.9);
+    background: grey;
+    color: black;
+}
+.deck-wrapper{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.delete-deck-button{
+    background: url(/resources/delete.png);
+    background-color:rgba(10, 10, 10, 0.3);
+    background-size: contain;
+    height: 40px;
+    width: 40px;
+    
+}
+
+/*Deck-modal*/
+#card-container{
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card-image-box:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px 5px rgba(12, 12, 12, 0.9);
+    border-radius: 5%;
+
+}
+.card-img{
+    border-radius: 5%;
+    width: 100%;
+    height: 100%;
+}
+
+/*Modal*/
+#modal-container {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 4s ease-in-out;
+    width: 90%;
+    color: silver;
+    border: 0.25rem solid black;
+    padding: 0.75rem;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+    url(/resources/stone-texture.jpg);
+    box-shadow: 0px 0px 10px 5px rgba(12, 12, 12, 0.8);
+    background-size: contain;
+    display: grid;
+    grid-template-areas: 
+    "close"
+    "card"
+    "decks";
+    gap: 0.5rem;
+    
+}
+#modal-container.active {
+    visibility: visible;
+    opacity: 1;
+    position: fixed;
+    margin-top: 6rem;
+    overflow-y: auto;
+    
+}
+.close-modal{
+    grid-area: close;
+    border-radius: 50%;
+    border: 1px solid silver;
+    width: 34px;
+    height: 34px;
+    justify-self: end;
+    background: url(../resources/logos/close.png);
+}
+.card-main-box{
+    grid-area: card;
+    object-fit: contain;
+}
+.deck-modal-button{
+    grid-area: decks
+}
+
+.card-main-box {
+    grid-area: card;
+    display: grid;
+    align-items: center;
+    grid-template-areas:
+        "tittle tittle"
+        "manaCost manaCost"
+        "image type"
+        "image subtype"
+        "image power"
+        "image toughness"
+        "image set"
+        "descpt desctp";
+    grid-template-columns: 2fr 1fr;
+    gap: 0.2rem;
+}
+
+.card-name {
+    grid-area: tittle;
+    text-align: center;
+}
+
+.card-manacost {
+    grid-area: manaCost;
+    text-align: end;
+}
+
+.modal-img {
+    grid-area: image;
+    margin-top: 1rem;
+    
+}
+
+.card-types {
+    grid-area: type;
+}
+
+.card-subtype {
+    grid-area: subtype;
+}
+
+.card-text {
+    grid-area: desctp;
+    grid-column: span 2;
+}
+
+.card-power {
+    grid-area: power;
+}
+
+.card-toughness {
+    grid-area: toughness;
+}
+
+.card-set {
+    grid-area: set;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) { 
+
+    #deck-container {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    #card-container{
+        grid-template-columns: repeat(4, 2fr);
+    }
+
+}
+@media (min-width: 1024px){
+    *{
+        font-size: 22px;
+    }
+
+    .tittle{
+        font-size: 4rem;
+    }
+    main{
+        min-height: 100vh;
+    }
+    #deck-container {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 1rem;
+        margin: 3rem 0rem 1rem 0rem;
+
+    }
+    .deck-button{
+        width: 60%;
+    }
+    #card-container{
+        margin: 2rem 0rem;
+        grid-template-columns: repeat(5, 2fr);
+        gap: 4rem;
+    }
+    #modal-container.active{
+        overflow-y: hidden;
+        width: 45%;
+        margin-top: 4rem;
+    }
+    .card-main-box{
+        grid-template-areas:
+        "tittle manaCost"
+        "image type"
+        "image subtype"
+        "image power"
+        "image toughness"
+        "image desctp"
+        "image set";
+        grid-template-columns: 1fr 1fr;
+    }
+    .modal-img{
+        width: 22vw;
+    }
+    .card-img{
+        border-radius: 5%;
+    }
+    .card-main-box p{
+        margin:0rem 1rem;
+    }
+    .card-manacost{
+        justify-self: center;
+    }
+    .deck-modal-button{
+        margin-bottom: 1rem;
+    }
+}

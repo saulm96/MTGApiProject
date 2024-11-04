@@ -1,3 +1,4 @@
+
 main {
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(100, 100, 100, 0.4), rgba(0, 0, 0, 0.2)),
         url('https://gatherer.wizards.com/Images/background/Gray_Patterned_BG.jpg');
@@ -11,6 +12,7 @@ main {
 .tittle {
     padding: 2rem;
     color: silver;
+    font-size: 3rem;
 }
 
 /*Form*/
@@ -125,6 +127,9 @@ main {
 
 .rarity-div{
     color: silver;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 #rarity-selector {
@@ -138,12 +143,12 @@ main {
 
 /*Card styles*/
 #card-container {
-    min-height: 40rem;
-    width: 100%;
+    width: 90%;
     display: grid;
     grid-template-columns:repeat(3,1fr);
     gap: 2rem;
-    padding: 1rem;
+    padding: 0.5rem;
+    min-height: 100vh;
 }
 
 .card-img {
@@ -156,17 +161,14 @@ main {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
 }
 
 .card-image-box:hover {
-
     transform: scale(1.1);
     width: 100%;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
 }
-
 /*MODAL*/
 .hidden {
     visibility: hidden;
@@ -182,8 +184,9 @@ main {
     color: silver;
     border: 0.25rem solid black;
     padding: 0.75rem;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)),
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
     url(/resources/stone-texture.jpg);
+    box-shadow: 0px 0px 10px 5px rgba(12, 12, 12, 0.8);
     background-size: contain;
     display: grid;
     grid-template-areas: 
@@ -191,13 +194,17 @@ main {
     "card"
     "decks";
     gap: 0.5rem;
+    
 }
 
 #modal-container.active {
+    margin-top: 15rem;
     visibility: visible;
     opacity: 1;
     position: fixed;
     margin-top: 2rem;
+    overflow-y: auto;
+    
 }
 
 .close-modal {
@@ -225,7 +232,6 @@ main {
     grid-template-columns: 2fr 1fr;
     gap: 0.2rem;
 }
-
 .card-name {
     grid-area: tittle;
     text-align: center;
@@ -242,10 +248,6 @@ main {
     
 }
 
-.card-img{
-    object-fit: contain;
-
-}
 .card-types {
     grid-area: type;
 }
@@ -272,7 +274,7 @@ main {
 }
 .deck-modal-button{
     grid-area: decks;
-    width: 11%;
+    width: 2.5rem;
     height: 2.5rem;
     background: url(../resources/logos/add-img.png);
     border: none;
@@ -315,7 +317,6 @@ main {
     grid-template-columns: repeat(auto-fill, minmax(4rem, 1fr)); /* Distribuye columnas de manera dinámica */
 }
 
-/* Estilo del Botón */
 .collection-button {
     background-color: lightgrey;
     height: 2rem;
@@ -325,24 +326,98 @@ main {
     box-shadow: 0 0 10px 5px rgba(100, 100, 100, 0.5);
 }
 
+.loading-container {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
 
-@media (min-width: 769px) and (max-width: 1024px) { /* Tablets */
+.loading-container.scroll-loading {
+    position: static;
+    transform: none;
+    grid-column: 1 / -1; /* Esto hace que ocupe todas las columnas del grid */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.loading-gif {
+    width: 64px;
+    height: 64px;
+}
+
+@media (min-width: 500px) and (max-width: 1024px) { 
     .search-filter{
-        width: 80%;
+        width: 35vh;
     }
+
     #card-container {
-        grid-template-columns: repeat(4, 1fr); /* 4 cartas por fila */
+        grid-template-columns: repeat(4, 1fr);
     }
+
 }
 @media (min-width: 1024px){
+    *{
+        font-size: 22px;
+    }
+    main{
+        margin-top: 8rem;
+    }
     .search-filter{
         flex-direction: row;
-        width: 80%;
+        width: 95%;
         justify-content: center;
-        gap: 2rem;
+        gap: 1rem;
     }
+
     #card-container{
         grid-template-columns: repeat(6, 1fr);
+    }
+    .card-image-box{
+        width: 100%;
+    }
+    .card-image-box:hover{
+        width: 100%;
+    }
 
+    #modal-container.active{
+        overflow-y: auto;
+        width: 45%;
+        margin-top: 2rem;
+        max-height: 43rem;
+    }
+    .card-main-box{
+        grid-template-areas:
+        "tittle manaCost"
+        "image type"
+        "image subtype"
+        "image power"
+        "image toughness"
+        "image desctp"
+        "image set";
+        grid-template-columns: 1fr 1fr;
+    }
+    .modal-img{
+        width: 22vw;
+    }
+    .card-img{
+        border-radius: 5%;
+    }
+    .card-main-box p{
+        margin:0rem 1rem;
+    }
+    .card-manacost{
+        justify-self: center;
+    }
+    .deck-modal-button{
+        margin-bottom: 1rem;
+    }
+    .create-collection-button{
+        width: 5rem;
+    }
+    .collection-input-container{
+        gap: 1.5rem;
     }
 }

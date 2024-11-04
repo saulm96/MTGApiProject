@@ -50,3 +50,4 @@ Create a checkbox to ask if you want the results of the filter to only get image
 
 
 
+RETOCAR EL TAMAÑO DEL GIF DE CARGA.

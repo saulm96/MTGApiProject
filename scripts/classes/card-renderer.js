@@ -7,6 +7,7 @@ export class CardRenderer {
         this.modalManager = modalManager || new ModalManager();
     }
     displayCardResults(cards) {
+        //Sort cards using a method
         const sortedCards = this.sortCardsByImageAvailability(cards);
         
         sortedCards.forEach(cardData => {
@@ -18,7 +19,7 @@ export class CardRenderer {
             this.attachCardClickListener(cardElement, card);
         });
     }
-
+    //Function to sort cards based on wheter they have an image
     sortCardsByImageAvailability(cards) {
         return cards.sort((a, b) => {
             if (a.imageUrl && !b.imageUrl) return -1;
@@ -26,7 +27,7 @@ export class CardRenderer {
             return 0;
         });
     }
-
+    //Create a Card instance with the given data
     createCardInstance(cardData, imageUrl) {
         return new Card(
             cardData.name,
@@ -41,7 +42,7 @@ export class CardRenderer {
             cardData.setName
         );
     }
-
+    //Attach a click listener to show the full content of the card.
     attachCardClickListener(cardElement, card) {
         cardElement.addEventListener('click', () => this.modalManager.showFullCard(card));
     }

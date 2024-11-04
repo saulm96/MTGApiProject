@@ -11,8 +11,7 @@ class Card {
         this.toughness = toughness || '';
         this.set = set || '';
     }
-
-    // Método para renderizar solo la imagen
+    //Method to only render the image of a card
     renderPresentation() {
         const section = document.createElement('section');
         section.classList.add('card-image-box');
@@ -40,7 +39,7 @@ class Card {
         return section;
     }
 
-
+//Method to render the whole data
     renderFullCard() {
         const section = document.createElement('section');
         section.classList.add('card-main-box');
@@ -51,7 +50,6 @@ class Card {
 
 
         const image = this.renderPresentation();
-        //Change the class so it works propperly also in the modal
         image.classList.replace('card-image-box', 'modal-img')
 
         const types = document.createElement('p');
@@ -80,9 +78,8 @@ class Card {
 
         const set = document.createElement('p');
         set.classList.add('card-set');
-        set.textContent = 'set: ' + this.set; 
+        set.textContent = 'Set: ' + this.set; 
 
-        // Añadimos todos los elementos creados al contenedor principal
         section.append(name, image, types, subtypes, text, manacost, power, toughness, set);
 
         return section;

@@ -2,9 +2,15 @@ import { CollectionManager } from "./collection-manager.js";
 
 export class ModalManager {
     constructor() {
-        this.form = document.querySelector('.search-filter');
-        this.cardContainer = document.getElementById('card-container');
+        this.form = document.querySelector('.search-filter') || null;
+        this.cardContainer = document.getElementById('card-container') || null;
         this.modalContainer = document.getElementById('modal-container');
+
+        if (!this.modalContainer) {
+            console.error('Error: No se encontró "modalContainer" en el DOM. Es necesario para mostrar los modales.');
+            return;
+        }
+
         this.collectionManager = new CollectionManager();
     }
 
@@ -13,11 +19,13 @@ export class ModalManager {
         this.renderFullCardModal(card);
         this.setupModalButtons(card);
         this.toggleModalVisibility(true);
-        this.disableScroll(); // Deshabilitar scroll al mostrar el modal
+        this.disableScroll();
     }
 
     clearModalContent() {
-        this.modalContainer.innerHTML = '';
+        if (this.modalContainer) {
+            this.modalContainer.innerHTML = '';
+        }
     }
 
     renderFullCardModal(card) {
@@ -49,15 +57,17 @@ export class ModalManager {
     }
 
     toggleModalVisibility(isVisible) {
-        this.form.classList.toggle('hidden', isVisible);
-        this.cardContainer.classList.toggle('hidden', isVisible);
-        this.modalContainer.classList.toggle('active', isVisible);
+        if (this.form) this.form.classList.toggle('hidden', isVisible);
+        if (this.cardContainer) this.cardContainer.classList.toggle('hidden', isVisible);
+        if (this.modalContainer) this.modalContainer.classList.toggle('active', isVisible);
     }
 
     hideFullCard() {
         this.toggleModalVisibility(false);
-        this.modalContainer.innerHTML = '';
-        this.enableScroll(); // Reactivar scroll al cerrar el modal
+        if (this.modalContainer) {
+            this.modalContainer.innerHTML = '';
+        }
+        this.enableScroll();
     }
 
     showDeckModal(card) {
@@ -71,12 +81,10 @@ export class ModalManager {
         this.modalContainer.appendChild(deckModal);
     }
 
-    // Nuevo método para deshabilitar el scroll
     disableScroll() {
         document.body.style.overflow = 'hidden';
     }
 
-    // Nuevo método para habilitar el scroll
     enableScroll() {
         document.body.style.overflow = '';
     }

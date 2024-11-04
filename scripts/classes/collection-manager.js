@@ -1,29 +1,34 @@
 export class CollectionManager {
     createDeckModal(card) {
+        //Create a modal to choose a collection or create a new one
         const newModal = document.createElement('div');
         newModal.classList.add('deck-modal');
 
+        //Tittle
         const title = document.createElement('h3');
         title.textContent = "Choose a collection or create a new one";
-        newModal.appendChild(title);
 
+        newModal.appendChild(title);
+        //New collection
         const createCollectionButton = this.createNewCollectionButton(card, newModal);
         newModal.appendChild(createCollectionButton);
 
+        //Container for existing selection or creating a new one
         const collectionInputContainer = this.createCollectionInputContainer(card);
         newModal.appendChild(collectionInputContainer);
 
-        // Ahora añadimos los botones de colección al contenedor, no al modal
+        //Add buttons for existing collections based on localStorage data
         this.addExistingCollectionButtons(collectionInputContainer, card);
 
         return newModal;
     }
 
     createNewCollectionButton(card, newModal) {
+        //Button to create a new collection
         const createCollectionButton = document.createElement('button');
         createCollectionButton.textContent = 'New Deck';
         createCollectionButton.classList.add('create-collection-button');
-        
+        //Event listener to show input for a new collection name
         createCollectionButton.addEventListener('click', () => {
             this.showNewCollectionInput(createCollectionButton, card);
         });
@@ -32,14 +37,10 @@ export class CollectionManager {
     }
 
     showNewCollectionInput(createButton, card) {
-        // Obtén el modal contenedor principal (deck-modal) en lugar de collectionInputContainer
         const deckModal = createButton.closest('.deck-modal');
-        
-        // Verifica si los elementos ya existen en el modal para evitar duplicados
+        //Check if input and save button already exist to avoid duplicates
         if (!deckModal.querySelector('.collection-input') && !deckModal.querySelector('.save-collection-button')) {
-            // Crear y añadir los elementos directamente al modal
             const { collectionInput, saveCollectionButton } = this.createCollectionInputElements(card);
-            
             deckModal.appendChild(collectionInput);
             deckModal.appendChild(saveCollectionButton);
         }
@@ -74,7 +75,6 @@ export class CollectionManager {
         return collectionInputContainer;
     }
 
-    // Modificada para añadir los botones al contenedor en lugar del modal
     addExistingCollectionButtons(container, card) {
         const collectionNames = Object.keys(localStorage)
             .filter(key => key !== 'length');

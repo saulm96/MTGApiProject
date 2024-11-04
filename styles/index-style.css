@@ -1,3 +1,8 @@
+
+@font-face {
+    font-family: "TittleFontItalic";
+    src: url("../resources/fonts/Fondamento-Italic.ttf") format("truetype");
+}
 /*Body*/
 main {
     margin-top: 10rem;
@@ -19,7 +24,6 @@ main {
 }
 
 .tittles {
-
     padding-top: 2rem;
     display: flex;
     flex-direction: column;
@@ -29,9 +33,11 @@ main {
 h1 {
     margin-top: 1rem;
     color: silver;
+    font-size: 2rem;
 }
 
 .pageSubtittle {
+    font-family: "TittleFontItalic";
     text-align: center;
     font-style: italic;
     color: silver;
@@ -66,6 +72,9 @@ h1 {
 
 }
 
+.dot-position{
+    margin-top: 1rem;
+}
 .dot {
     width: 0.5rem;
     height: 0.5rem;
@@ -209,6 +218,15 @@ h1 {
 }
 
 @media (min-width: 1200px) {
+    *{
+        font-size: 20px;
+    }
+    main{
+        margin-top: 9rem;
+    }
+    header{
+        font-size: 22px;
+    }
 #scrollContainer{
     margin-top: 2rem;
     height: 30rem;
@@ -219,7 +237,7 @@ h1 {
     height: 100%;
 }
 .dot-position{
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 .exampleIMG{
     height: 25rem;

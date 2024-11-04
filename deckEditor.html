@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <header>
         <section class="logoHolder">
@@ -16,12 +18,18 @@
                 <li><a href="archanumCards.html">Search cards</a></li>
                 <li><a href="#">Decks</a></li>
             </ul>
-            <div class="userButtons">
-                <button class="signIn">Sign In</button>
-                <button class="logIn">Log In</button>
-            </div>
         </nav>
     </header>
+    <main>
+        <section class="main-content">
+            <div id="modal-container" class="hidden"></div>
+            <h1 class="tittle">Decks</h1>
+            <div id="deck-container"></div>
+            <div id="card-container"></div>
+        </section>
+
+    </main>
+
     <footer>
         <div class="banner">
             <img src="resources/manas/whiteMana.png" alt="small old logo" class="finishingLogoW">
@@ -32,5 +40,8 @@
         </div>
     </footer>
     <link rel="stylesheet" href="/styles/common-styles.css">
+    <link rel="stylesheet" href="/styles/decks-styles.css">
+    <script type="module" src="/scripts/deck-index.js"></script>
 </body>
+
 </html>

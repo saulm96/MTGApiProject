@@ -8,8 +8,15 @@ export class FormHandler {
         const cardRenderer = new CardRenderer(modalManager);
         
         this.cardRenderer = cardRenderer;
+        this.currentPage = 1;
+        this.isLoading = false;
+        this.hasMoreCards = true;
+        this.lastSearchParams = null;
+        
         this.initializeDOMElements();
         this.bindFormSubmitEvent();
+        this.bindScrollEvent();
+        this.createLoadingElement();
     }
 
     initializeDOMElements() {
@@ -17,14 +24,63 @@ export class FormHandler {
         this.cardContainer = document.getElementById('card-container');
     }
 
-    bindFormSubmitEvent() {
-        this.form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const searchParams = this.extractSearchParameters();
-            await this.renderSearchResults(searchParams);
+
+    createLoadingElement() {
+        this.loadingElement = document.createElement('div');
+        this.loadingElement.className = 'loading-container';
+        
+        const loadingGif = document.createElement('img');
+        loadingGif.src = './resources/loading.gif';
+        loadingGif.alt = 'Loading...';
+        loadingGif.className = 'loading-gif';
+        
+        this.loadingElement.appendChild(loadingGif);
+    }
+
+    showLoading(isNewSearch) {
+        this.isLoading = true;
+        if (isNewSearch) {
+            this.cardContainer.innerHTML = '';
+            this.loadingElement.classList.remove('scroll-loading');
+        } else {
+            this.loadingElement.classList.add('scroll-loading');
+        }
+        this.cardContainer.appendChild(this.loadingElement);
+    }
+
+    hideLoading() {
+        this.isLoading = false;
+        if (this.loadingElement.parentNode) {
+            this.loadingElement.remove();
+        }
+    }
+    bindScrollEvent() {
+        window.addEventListener('scroll', () => {
+            if (this.shouldLoadMoreCards()) {
+                this.loadNextPage();
+            }
         });
     }
 
+    shouldLoadMoreCards() {
+        if (this.isLoading || !this.hasMoreCards) return false;
+
+        const scrollPosition = window.scrollY + window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+
+        return (documentHeight - scrollPosition) < 200;
+    }
+
+    bindFormSubmitEvent() {
+        this.form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            this.currentPage = 1;
+            this.hasMoreCards = true;
+            const searchParams = this.extractSearchParameters();
+            this.lastSearchParams = searchParams;
+            await this.renderSearchResults(searchParams, true);
+        });
+    }
     extractSearchParameters() {
         const formData = {
             name: document.getElementById('card-name').value,
@@ -33,10 +89,20 @@ export class FormHandler {
             colors: this.extractSelectedColors(),
             type: document.getElementById('type-selector').value,
             subtypes: document.getElementById('subtypes').value,
-            rarity: document.getElementById('rarity-selector').value
+            rarity: document.getElementById('rarity-selector').value,
+            page: this.currentPage,
+            
         };
 
         return this.sanitizeSearchParameters(formData);
+    }
+
+    async loadNextPage() {
+        if (this.lastSearchParams && !this.isLoading && this.hasMoreCards) {
+            this.currentPage++;
+            const params = { ...this.lastSearchParams, page: this.currentPage };
+            await this.renderSearchResults(params, false);
+        }
     }
 
     extractSelectedColors() {
@@ -53,23 +119,33 @@ export class FormHandler {
         );
     }
 
-    async renderSearchResults(searchParams) {
+    async renderSearchResults(searchParams, isNewSearch) {
         try {
-            this.cardContainer.innerHTML = '';
+            this.showLoading(isNewSearch);
             const response = await cardFilter(searchParams);
             
             if (!response.cards || response.cards.length === 0) {
-                this.displayNoResultsMessage();
+                this.hasMoreCards = false;
+                if (isNewSearch) {
+                    this.displayNoResultsMessage();
+                }
                 return;
             }
 
-            this.cardRenderer.displayCardResults(response.cards);
+            await this.cardRenderer.displayCardResults(response.cards, !isNewSearch);
+
+            if (response.cards.length < 20) {
+                this.hasMoreCards = false;
+            }
+
         } catch (error) {
             this.displayErrorMessage(error);
+        } finally {
+            this.hideLoading();
         }
     }
-
     displayNoResultsMessage() {
+        this.hideLoading();
         const noResults = document.createElement('p');
         noResults.textContent = 'No cards found';
         noResults.classList.add('no-results');
@@ -77,6 +153,7 @@ export class FormHandler {
     }
 
     displayErrorMessage(error) {
+        this.hideLoading();
         console.error('Error displaying cards:', error);
         const errorMessage = document.createElement('p');
         errorMessage.textContent = 'Error loading cards';

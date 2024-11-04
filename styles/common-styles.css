@@ -1,3 +1,10 @@
+@font-face {
+    font-family: "TittleFont";
+    src: url("../resources/fonts/Fondamento-Regular.ttf") format("truetype");
+}
+h1 ,h2{
+    font-family: "TittleFont";
+}
 * {
     margin: 0rem;
     padding: 0rem;
@@ -51,8 +58,10 @@ header {
 /*Banner*/
 footer{
     background: url('https://gatherer.wizards.com/Images/background/Gray_Patterned_BG.jpg');
+    width: 100%;
 }
 .banner {
+    bottom: 0;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -61,6 +70,7 @@ footer{
     align-items: center;
     height: 5rem;
     background-color: rgba(0, 0, 0, 1);
+
 }
 .finishingLogoG {
     width: 2rem;
