@@ -76,6 +76,20 @@ main {
     border-radius: 5%;
 
 }
+.card-image-box{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    
+}
+.delete-card-button{
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+    position: absolute;
+    bottom: 0;
+    background-color: gray;
+}
 .card-img{
     border-radius: 5%;
     width: 100%;
@@ -86,7 +100,7 @@ main {
 #modal-container {
     visibility: hidden;
     opacity: 0;
-    transition: opacity 4s ease-in-out;
+    transition: opacity 2s ease-in-out;
     width: 90%;
     color: silver;
     border: 0.25rem solid black;
@@ -100,8 +114,6 @@ main {
     "close"
     "card"
     "decks";
-    gap: 0.5rem;
-    
 }
 #modal-container.active {
     visibility: visible;
@@ -223,8 +235,9 @@ main {
     }
     #modal-container.active{
         overflow-y: hidden;
-        width: 45%;
-        margin-top: 4rem;
+        width: 40%;
+        align-self: center;
+        margin-top: 1.5rem;
     }
     .card-main-box{
         grid-template-areas:

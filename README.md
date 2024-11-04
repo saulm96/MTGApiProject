@@ -1,19 +1,17 @@
-MTGApiProject
-##Landing page:
-    Welcome page divided into four main sections:
+Responsive Design: Optimized for mobile devices, ensuring ease of use across various screen sizes.
 
-##Homepage.
-    -Card search.
-    -Deck builder.
-    -Contact page.
+Dynamic Carousel: A carousel with a fade effect and point indicators for improved visual presentation on the landing page.
 
-##Card search:
-    -Ability to filter by:
-    -Card name.
-    -Card set.
-    -Card type.
-    -Mana color and mana cost.
-    -Release year.
-    -Specific words in the card's description.
-When you search by card yu will see only the front side of the card with a few important info. After clicking there a modal should spawn showing the rest of the info
-//Maybe front side could be true and back side false ?? with an AddListener to change it between true or false?? 
+API Integration: Retrieves and displays data through API calls, allowing flexible filtering based on user-selected parameters.
+
+Card Structure: Each card displays API data in two formats, image-only or full data view, based on user preference.
+
+Search and Filter Options: Search and filter functionalities allow users to refine displayed results.
+
+Pagination: Paginated view for better data management and navigation.
+
+Loading Indicator: A loading GIF to indicate when data is being fetched and loaded onto the page.
+
+Local Storage Management: Saves user data locally for a more personalized experience.
+
+Saved Cards Visualization: An additional feature to view previously added cards from the user’s saved decks.

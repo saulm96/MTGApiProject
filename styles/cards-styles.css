@@ -28,7 +28,6 @@ main {
     box-shadow: 0px 0px 10px 5px rgba(120, 120, 120, 0.2);
 }
 
-
 /*Name*/
 .name-div {
     display: flex;
@@ -367,7 +366,7 @@ main {
     }
     .search-filter{
         flex-direction: row;
-        width: 95%;
+        width: 80%;
         justify-content: center;
         gap: 1rem;
     }
