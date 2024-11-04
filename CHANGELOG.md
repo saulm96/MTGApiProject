@@ -40,14 +40,11 @@ finished searchfilter feature, still have to fix bugs when only one card is show
 Refactored the big class in smaller ones to make it easier to read and to scale if it's necesary.
 
 2024/11/02
+Added paginate.
+Added a loading gif to show untill all the cards are loaded into the page.
+Created a checkbox to ask if you want the results of the filter to only get images or not.
+Built a new class to control all the information from the localstorage.
 
+2024/11/03
+Added some styles in css and made it responsive.
 
-TO DO:
-cancel the scroll of the page when the modal is on.
-Add paginate.
-Add a loading gif to show untill all the cards are loaded into the page.
-Create a checkbox to ask if you want the results of the filter to only get images or not.
-
-
-
-RETOCAR EL TAMAÑO DEL GIF DE CARGA.
