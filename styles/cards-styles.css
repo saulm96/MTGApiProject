@@ -7,6 +7,7 @@ main {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    min-height: 84vh;
 }
 
 .tittle {
@@ -144,10 +145,9 @@ main {
 #card-container {
     width: 90%;
     display: grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(2,1fr);
     gap: 2rem;
     padding: 0.5rem;
-    min-height: 100vh;
 }
 
 .card-img {
@@ -160,7 +160,8 @@ main {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-
+    height: 15rem;
+    width: 10rem;
 }
 
 .card-image-box:hover {
@@ -363,6 +364,8 @@ main {
     }
     main{
         margin-top: 8rem;
+        min-height: 85.5vh;
+
     }
     .search-filter{
         flex-direction: row;
@@ -376,6 +379,7 @@ main {
     }
     .card-image-box{
         width: 100%;
+        height: 35vh;
     }
     .card-image-box:hover{
         width: 100%;
@@ -385,7 +389,7 @@ main {
         overflow-y: auto;
         width: 45%;
         margin-top: 2rem;
-        max-height: 43rem;
+        max-height: 45rem;
     }
     .card-main-box{
         grid-template-areas:
