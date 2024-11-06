@@ -51,7 +51,7 @@ export class DeckDisplay {
             deleteButton.classList.add('delete-deck-button');
             // Stop event propagation to prevent opening deck when deleting
             deleteButton.addEventListener('click', (e) => {
-                e.stopPropagation(); 
+                e.stopPropagation();
                 this.deleteDeck(deckName);
             });
 
@@ -67,7 +67,7 @@ export class DeckDisplay {
         if (confirm(`Are you sure you want to remove "${deckName}" from the collection?`)) {
             localStorage.removeItem(deckName);
             // Refresh deck display after deletion
-            this.displayDecks(); 
+            this.displayDecks();
         }
     }
 
@@ -84,7 +84,7 @@ export class DeckDisplay {
         const deckCards = this.getDeckCards(deckName);
         this.cardContainer.innerHTML = '';
         this.modalManager.clearModalContent();
-        
+
         // Show modal and clear previous content
         this.cardContainer.classList.remove('hidden');
         this.modalManager.modalContainer.classList.remove('active');
@@ -103,7 +103,7 @@ export class DeckDisplay {
                     deleteCardButton.classList.add('delete-card-button');
                     deleteCardButton.style.backgroundImage = 'url(./resources/delete.png)';
                     deleteCardButton.addEventListener('click', (e) => {
-                        e.stopPropagation(); 
+                        e.stopPropagation();
                         this.deleteCardFromDeck(deckName, cardData);
                     });
                     cardElement.appendChild(deleteCardButton);
@@ -130,33 +130,33 @@ export class DeckDisplay {
     }
 
     deleteCardFromDeck(deckName, cardData) {
-        // Guardar la posición de desplazamiento actual del contenedor de cartas
+        // Save the current scroll position of the card container
         const currentScrollPosition = this.cardContainer.scrollTop;
-    
-        // Recuperar el mazo desde el localStorage y filtrar la carta a eliminar
+
+        // Retrieve the deck from localStorage and filter out the card to delete
         const deck = this.getDeckCards(deckName);
         const updatedDeck = deck.filter(card => card.name !== cardData.name);
-    
-        // Actualizar el localStorage con el mazo modificado sin la carta eliminada
+
+        // Update localStorage with the modified deck without the deleted card
         localStorage.setItem(deckName, JSON.stringify(updatedDeck));
-    
-        // Limpiar el contenedor de cartas y actualizar con las cartas restantes
-        this.cardContainer.innerHTML = ''; // Vaciar el contenedor de cartas
+
+        // Clear the card container and update it with the remaining cards
+        this.cardContainer.innerHTML = ''; // Empty the card container
         updatedDeck.forEach(card => {
             const cardInstance = this.createCardInstance(card);
             const cardElement = cardInstance.renderPresentation();
-    
-            // Configurar el botón de eliminar de cada carta
+
+            // Set up the delete button for each card
             const deleteCardButton = document.createElement('button');
             deleteCardButton.classList.add('delete-card-button');
             deleteCardButton.style.backgroundImage = 'url(./resources/delete.png)';
             deleteCardButton.addEventListener('click', (e) => {
-                e.stopPropagation(); 
+                e.stopPropagation();
                 this.deleteCardFromDeck(deckName, card);
             });
             cardElement.appendChild(deleteCardButton);
-    
-            // Configurar el evento para mostrar los detalles completos de la carta
+
+            // Set up the event to show the full details of the card
             cardElement.addEventListener('click', () => {
                 this.modalManager.clearModalContent();
                 this.modalManager.renderFullCardModal(cardInstance);
@@ -166,15 +166,15 @@ export class DeckDisplay {
                 this.modalManager.modalContainer.classList.add('active');
                 this.modalManager.disableScroll();
             });
-    
-            // Agregar la carta al contenedor
+
+            // Add the card to the container
             this.cardContainer.appendChild(cardElement);
         });
-    
-        // Restaurar la posición de desplazamiento del contenedor de cartas
+
+        // Restore the scroll position of the card container
         this.cardContainer.scrollTop = currentScrollPosition;
     }
-    
+
     getDeckCards(deckName) {
         // Get deck from localStorage and parse it, return empty array if not found
         const deck = localStorage.getItem(deckName);

@@ -1,4 +1,4 @@
-Responsive Design: Optimized for mobile devices, ensuring ease of use across various screen sizes.
+Responsive Design: Optimized for mobile devices, ensuring ease of use across various screen sizes(Actually only available on phones and pc screens).
 
 Dynamic Carousel: A carousel with a fade effect and point indicators for improved visual presentation on the landing page.
 
@@ -8,7 +8,7 @@ Card Structure: Each card displays API data in two formats, image-only or full d
 
 Search and Filter Options: Search and filter functionalities allow users to refine displayed results.
 
-Pagination: Paginated view for better data management and navigation.
+Pagination: Paginated view for better data management and navigation using infinite scroll.
 
 Loading Indicator: A loading GIF to indicate when data is being fetched and loaded onto the page.
 
